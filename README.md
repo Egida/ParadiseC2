@@ -1,6 +1,6 @@
 # Kenos-Lite
 A python botnet forked from "PYbot" which was discontinued, a small glimpse into Kenos V2. Final will include more menus more methods and refined payloads!
-colorama python3
+
 <div>
   <h2>Requirements</h2><lu>
   <li>A VPS Server
@@ -9,12 +9,17 @@ colorama python3
 <div>
   <h2>How to Setup</h2>
   <pre><code>sudo apt install python2 python3
+pip3 install colorama
 cd Kenos-Lite
 python cnc.py 23</code></pre>
+  <li>Use telnet with the ip of your server and port 23</li>
   <div>
 
 <div>
-  <h2>How to Setup Bots</h2>
+  <h2>How to Setup Bots</h2><lu>
+  <li>Change IP in bot.py to server ip
+  <li>Go onto another machine (With permission)
+  <li>Copy and run bot.py
 
 <div>
   <h2>Recommended Hosting</h2><lu>

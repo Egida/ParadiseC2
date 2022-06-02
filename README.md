@@ -19,7 +19,7 @@ python cnc.py 23</code></pre>
   <h2>How to Setup Bots</h2><lu>
   <li>Change IP in bot.py to server ip
   <li>Go onto another machine (With permission)
-  <li>Copy and run bot.py
+  <li>Copy and run bot.py; <code>python3 bot.py</code>
 
 <div>
   <h2>Recommended Hosting</h2><lu>

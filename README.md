@@ -1,4 +1,4 @@
-# Kenos-Lite
+# Kenos-Lite (Broken at the moment)
 A python botnet forked from "PYbot" which was discontinued, a small glimpse into Kenos V2. Final will include more menus more methods and refined payloads!
 
 <div>

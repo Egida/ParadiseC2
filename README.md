@@ -12,7 +12,8 @@ A python botnet forked from "PYbot" which was discontinued, a small glimpse into
 pip3 install colorama
 cd Kenos-Lite
 python3 cnc.py 23</code></pre>
-  <li>Use telnet with the ip of your server and port 23</li>
+  <li>Use telnet with the ip of your server and port 23</li>  
+  Example: <pre><code>telnet 198.245.61.217 23</code></pre>
   <div>
 
 <div>

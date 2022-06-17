@@ -1,4 +1,4 @@
-# Kenos-C2 (Broken at the moment)
+# KenosC2 (Broken at the moment)
 A python botnet forked from "PYbot" which was discontinued, a completely remade version. Final will include more menus more methods and refined payloads!
 
 # Requirements

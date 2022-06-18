@@ -1,1 +1,1 @@
-user:pass
+root:root

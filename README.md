@@ -1,5 +1,5 @@
 # Paradise
-A python botnet forked from "PYbot" which was discontinued, a completely remade version. Final will include more menus more methods and refined payloads!
+A python botnet forked from "PYbot" which was discontinued, a completely remade version.
 
 # Requirements
   <li>A VPS Server</li>
@@ -17,7 +17,6 @@ A python botnet forked from "PYbot" which was discontinued, a completely remade 
   <li>Copy and run bot.py; <code>python3 bot.py</code></li>
 
 # Recommended Hosting
-  <li><a href="https://sacred.sbs/">Sacred</a>
   <li><a href="https://www.cloudways.com/en/">Cloudways</a>
   <li><a href="https://crazyrdp.com/linux-vps-hosting/">CrazyRDP</a></li>
     <div></lu>

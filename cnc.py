@@ -21,9 +21,6 @@
 # - New look!          #
 ########################
 
-# Checklist
-#make a scanner
-
 # Libraries
 import socket, threading, sys, time, ipaddress
 from colorama import Fore, init

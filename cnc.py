@@ -521,10 +521,10 @@ def handle_client(client, address):
         bots.update({client: address})
 
 # Screening 
-screenedSuccessfully = """
-\x1b[40;38;2;0;255;128m                    ╔═══════════════════════════╗
-\x1b[40;38;2;0;213;170m                    ║\x1b[0m   Successfully Screened   \x1b[40;38;2;0;213;170m║
-\x1b[40;38;2;0;171;212m                    ╚═══════════════════════════╝
+screenedSuccessfully = """\x1b[0m
+                    ╔═══════════════════════════╗
+                    ║   Successfully Screened   ║
+                    ╚═══════════════════════════╝
 """
 
 def main():

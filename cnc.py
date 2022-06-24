@@ -180,11 +180,11 @@ def update_title(client, username):
             client.close()
 
 # Telnet Command Line
-def command_line(client):
+def command_line(client, username):
     for x in banner.split('\n'):
         send(client, x)
 
-    prompt = f'\x1b[0m[\x1b[32m~\x1b[0m] \x1b[0;38;2;0;128;255mParadise \x1b[0m$ '
+    prompt = f'\x1b[0m[\x1b[32m~\x1b[0m]', + username + '\x1b[0;38;2;0;128;255mParadise \x1b[0m$ '
     send(client, prompt, False)
 
     while 1:
@@ -523,12 +523,14 @@ def handle_client(client, address):
 
 # Screening and Broadcasting (Via Telnet)
 screenedSuccessfully = """\x1b[0m
-  ╔════════════════════════════════════╗
-  ║                                    ║
-  ║        Successfully Screened       ║
-  ║     ───────────────────────────    ║
-  ║              ⤥ Logs ⤦              ║
-  ╚════════════════════════════════════╝
+        ╔════════════════════════════════════╗
+        ║                                    ║
+        ║        Successfully Screened       ║
+        ║     ───────────────────────────    ║
+        ║            ╔══════════╗            ║
+        ╚════════════╣   LOGS   ╠════════════╝
+                     ╚══════════╝
+  
 """
 
 def main():

@@ -1,4 +1,4 @@
-# Paradise
+# ParadiseC2
 A python botnet forked from "PYbot" which was discontinued, a completely remade version.
 
 # Requirements

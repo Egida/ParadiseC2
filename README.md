@@ -1,5 +1,5 @@
 # ParadiseC2
-A python botnet forked from <a href="https://crazyrdp.com/linux-vps-hosting/">PYBot</a> which was discontinued, a completely remade version.
+A python botnet forked from <a href="https://github.com/wodxgod/PYbot">PYBot</a> which was discontinued, a completely remade version.
 
 # Requirements
   <li>A VPS Server</li>

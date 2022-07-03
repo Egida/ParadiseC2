@@ -1,0 +1,3 @@
+how to load AVTech
+#1 . zmap -p554 -w av.txt -o vvs.txt
+#2. python avtech2.py list1.txt 1000 list2.txt

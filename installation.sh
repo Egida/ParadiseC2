@@ -9,8 +9,9 @@ sudo apt install python2
 sudo apt install python
 clear
 echo "Installing required files for "ParadiseC2" 50% [=====>----]"
-sudo apt install pip3
+sudo apt install python3-pip
 pip3 install colorama
+sudo apt install screen
 clear
 echo "Installing required files for "ParadiseC2" 100% [==========]"
 sleep 2

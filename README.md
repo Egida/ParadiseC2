@@ -14,7 +14,7 @@ A python botnet forked from <a href="https://github.com/wodxgod/PYbot">PYBot</a>
   <pre><code>screen python3 cnc.py (PORT)</pre></code>
   
   <div><p>Make sure you change the username and password in the <code>logins.txt</code> file.</p>
-  <pre><code>root@oshere:~$ nano logins.txt
+  <pre><code>root@d3fe4ted:~$ nano logins.txt
 ---- GNU nano 5.4 -----------------------------------------------------------
  root:root
  .

@@ -19,6 +19,7 @@
 # - Added New Methods  #
 # - Cleaned up menus   #
 # - New look!          #
+# - Telnet Scanner     #
 ########################
 
 # Libraries
@@ -66,8 +67,10 @@ help = """
 \x1b[0;38;2;0;237;146m    │\x1b[0m HELP    \x1b[0;38;2;0;237;146m│\x1b[0m Shows list of commands        \x1b[0;38;2;0;237;146m│
 \x1b[0;38;2;0;219;164m    │\x1b[0m HOW     \x1b[0;38;2;0;219;164m│\x1b[0m Shows usage of attacks        \x1b[0;38;2;0;219;164m│
 \x1b[0;38;2;0;201;182m    │\x1b[0m METHODS \x1b[0;38;2;0;201;182m│\x1b[0m Shows list of attack methods  \x1b[0;38;2;0;201;182m│
+\x1b[0;38;2;0;193;182m    │\x1b[0m ABOUT   \x1b[0;38;2;0;201;182m│\x1b[0m About ParadiseC2              \x1b[0;38;2;0;201;182m│
 \x1b[0;38;2;0;183;200m    │\x1b[0m CLEAR   \x1b[0;38;2;0;183;200m│\x1b[0m Clears the screen             \x1b[0;38;2;0;183;200m│
 \x1b[0;38;2;0;165;218m    │\x1b[0m LOGOUT  \x1b[0;38;2;0;165;218m│\x1b[0m Disconnects from the net      \x1b[0;38;2;0;165;218m│
+\x1b[0;38;2;0;152;218m    │\x1b[0m EXIT    \x1b[0;38;2;0;165;218m│\x1b[0m Disconnects from the net      \x1b[0;38;2;0;165;218m│
 \x1b[0;38;2;0;147;236m    └─────────┴───────────────────────────────┘
 """
 

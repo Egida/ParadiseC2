@@ -27,6 +27,8 @@ A python botnet forked from <a href="https://github.com/wodxgod/PYbot">PYBot</a>
  &nbsp;
  &nbsp;
  &nbsp;
+ ^G Help          ^O Write Out     ^W Where Is      ^K Cut           ^T Execute       ^C Location      M-U Undo
+ ^X Exit          ^R Read File     ^\ Replace       ^U Paste         ^J Justify       ^_ Go To Line    M-E Redo
   Once you changed these details press "CTRL + X" and then "Y" then "ENTER" on your keyboard</code></pre>
   
   <div><li>Use telnet with the IP of your server and port in another terminal or PuTTY</li>

@@ -17,12 +17,16 @@ A python botnet forked from <a href="https://github.com/wodxgod/PYbot">PYBot</a>
   <pre><code>root@d3fe4ted:~$ nano logins.txt
 ---- GNU nano 5.4 -----------------------------------------------------------
  root:root
- .
- .
- .
- .
- .
- .
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
+ &nbsp;
   Once you changed these details press "CTRL + X" and then "Y" then "ENTER" on your keyboard</code></pre>
   
   <div><li>Use telnet with the IP of your server and port in another terminal or PuTTY</li>

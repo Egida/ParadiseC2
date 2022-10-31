@@ -6,7 +6,7 @@ A python botnet forked from <a href="https://github.com/wodxgod/PYbot">PYBot</a>
   <li>Any Linux Distro (I recommend Debian)</li>
 
 # Installation
-  <p>Install the required packages</p>
+  <p>Copy the installation command below</p>
   <pre><code>sudo apt install bash wget && wget https://raw.githubusercontent.com/d3fe4ted/ParadiseC2/main/installation.sh && sudo bash installation.sh</code></pre>
 
 # How to Setup
